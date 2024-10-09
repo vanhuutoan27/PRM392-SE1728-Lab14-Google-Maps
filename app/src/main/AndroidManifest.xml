@@ -41,6 +41,10 @@
             android:name=".TrackMapActivity"
             android:exported="false"></activity>
 
+        <activity
+            android:name=".MapTypeActivity"
+            android:exported="false"></activity>
+
         <!-- API Key cho Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
