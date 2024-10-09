@@ -6,25 +6,35 @@ import android.widget.Button;
 
 import androidx.appcompat.widget.Toolbar;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnShowMap;
+    Button btnShowMap, btnSearchMap, btnTrackMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        btnShowMap = findViewById(R.id.btnShowMap);
+        btnShowMap = findViewById(R.id.btnShow);
+        btnSearchMap = findViewById(R.id.btnSearch);
+        btnTrackMap = findViewById(R.id.btnTrack);
 
         btnShowMap.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            startActivity(intent);
+        });
+
+        btnSearchMap.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchMapActivity.class);
+            startActivity(intent);
+        });
+
+        btnTrackMap.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, TrackMapActivity.class);
             startActivity(intent);
         });
     }

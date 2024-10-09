@@ -29,12 +29,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MapActivity"></activity>
+        <activity
+            android:name=".MapActivity"
+            android:exported="false"></activity>
+
+        <activity
+            android:name=".SearchMapActivity"
+            android:exported="false"></activity>
+
+        <activity
+            android:name=".TrackMapActivity"
+            android:exported="false"></activity>
 
         <!-- API Key cho Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAZK_0iYEt6hq2MOnBpGa4aOToHi9Stk5E" />
+            android:value="AIzaSyBKuUdkZ2_DIL4OVWWEv05Mv0mQNZaesFU" />
     </application>
 
 </manifest>
