@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -119,10 +120,15 @@ public class TrackMapActivity extends AppCompatActivity implements OnMapReadyCal
             float[] results = new float[1];
             android.location.Location.distanceBetween(fromLatLng.latitude, fromLatLng.longitude,
                     toLatLng.latitude, toLatLng.longitude, results);
-            float distanceInKm = results[0] / 1000; // Khoảng cách tính bằng km
-            Toast.makeText(this, "Distance: " + distanceInKm + " km", Toast.LENGTH_LONG).show();
+            long distanceInKm = Math.round(results[0] / 1000);
+
+            // Hiển thị khoảng cách ra TextView
+            TextView distanceTextView = findViewById(R.id.textView);
+            distanceTextView.setText("Distance: " + distanceInKm + " km");
+
         } else {
             Toast.makeText(this, "Unable to calculate distance. Please check the locations.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -123,7 +123,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                     Location.distanceBetween(currentLocationLatLng.latitude, currentLocationLatLng.longitude,
                             destinationLatLng.latitude, destinationLatLng.longitude, result);
 
-                    float distanceInKm = result[0] / 1000; // Chuyển đổi khoảng cách sang km
+                    long distanceInKm = Math.round(result[0] / 1000);
                     Toast.makeText(this, "Distance: " + distanceInKm + " km", Toast.LENGTH_LONG).show();
 
                     // Nếu đã có polyline trước đó, xóa polyline cũ
