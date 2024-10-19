@@ -14,8 +14,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -28,10 +28,11 @@ import java.util.Locale;
 
 public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap googleMap;
+    private MapView mapView;
     private SearchView mapSearch;
     private LatLng currentLocationLatLng;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private Polyline polyline; // Biến để lưu trữ polyline
+    private Polyline polyline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +45,13 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        // Thiết lập SearchView và bản đồ
+        // Thiết lập SearchView và MapView
         mapSearch = findViewById(R.id.svLocation);
+        mapView = findViewById(R.id.gmap);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.gmap);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
+        // Khởi tạo MapView
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
 
         // Thiết lập FusedLocationProviderClient để lấy vị trí hiện tại
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -144,5 +144,42 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         } catch (IOException e) {
             Toast.makeText(this, "Error finding location", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Quản lý vòng đời của MapView
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
     }
 }

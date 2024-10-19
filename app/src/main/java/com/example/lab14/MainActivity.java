@@ -9,7 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnShowMap, btnSearchMap, btnTrackMap, btnMapType;
+    Button btnShowMap, btnSearchMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnShowMap = findViewById(R.id.btnShow);
         btnSearchMap = findViewById(R.id.btnSearch);
-        btnTrackMap = findViewById(R.id.btnTrack);
-        btnMapType = findViewById(R.id.btnType);
 
         btnShowMap.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MapActivity.class);
@@ -31,16 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnSearchMap.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SearchMapActivity.class);
-            startActivity(intent);
-        });
-
-        btnTrackMap.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, TrackMapActivity.class);
-            startActivity(intent);
-        });
-
-        btnMapType.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MapTypeActivity.class);
             startActivity(intent);
         });
     }

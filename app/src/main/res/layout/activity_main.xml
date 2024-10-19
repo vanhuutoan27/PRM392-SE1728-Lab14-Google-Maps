@@ -43,26 +43,5 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Search Map" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/btnTrack"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Track Map" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/btnType"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Map Type" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,6 +41,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Thêm thư viện cho Google Maps
-    implementation(libs.play.services.maps)
-    implementation(libs.play.services.location)
+    implementation ("com.google.android.gms:play-services-maps:19.0.0")
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
 }
